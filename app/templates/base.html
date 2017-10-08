@@ -41,22 +41,28 @@
       </nav>
       <h3 class="text-muted">Twitter</h3>
     </div>
+    
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="alert alert-warning">
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% endwith %}
+    
 
     {% block content %}
     <!-- Aqui vai o conteudo de outros forms  -->
     {% endblock %}
-
-    <footer class="footer">
-      <p>© 2016 Company, Inc.</p>
-    </footer>
-
-  </div>
-  <!-- /container -->
-
-
-
-
-
+    
+      
+    
+  </div>  <!-- /container -->    
+  
 </body>
 
 </html>

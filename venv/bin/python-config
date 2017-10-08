@@ -1,4 +1,4 @@
-#!/home/vitor/PythonAprendendo/versionados/flask-crud/venv/bin/python
+#!/home/vitor/projetosDosGit/flask-crud/venv/bin/python
 
 import sys
 import getopt
