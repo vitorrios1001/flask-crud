@@ -21,22 +21,22 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        
+
         if user and user.password == form.password.data:
             login_user(user)
             return redirect(url_for("index"))
             flash("Logged in.")
 
         else:
-            flash("Invalid login.")   
-        
+            flash("Invalid login.")
+
     return render_template('login.html', form=form)
 
 @app.route("/logout")
 def logout():
     logout_user()
     flash("Logged out.")
-    return redirect(url_for("index"))
+    return redirect(url_for("login"))
 
 
 
@@ -45,5 +45,5 @@ def logout():
 def teste(info):
     i = User("vitorrios", "1234", "Vitor Rios", "vitor@gmail.com")
     db.session.add(i)
-    db.session.commit()  
-    return "OK"  
+    db.session.commit()
+    return "OK"
