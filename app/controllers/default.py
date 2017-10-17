@@ -2,6 +2,7 @@ from app import app, db, lm
 from flask import render_template, flash, redirect, url_for
 from app.models.tables import User
 from flask_login import login_user, logout_user
+from wtforms import form
 
 from app.models.forms import LoginForm
 
@@ -47,3 +48,14 @@ def teste(info):
     db.session.add(i)
     db.session.commit()
     return "OK"
+
+
+@app.route("/register_user", methods=['POST', 'GET'])
+def register_user():
+    
+    form = RegistrationForm(request.form)
+
+    if request.method == 'POST' and form.validate():
+        user = User(form.username.data, form.password.data, )
+
+    return render_template("register_user.html")

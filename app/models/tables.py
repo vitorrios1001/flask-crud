@@ -6,15 +6,17 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, unique=True)
-    password = db.Column(db.String)
-    name = db.Column(db.String)
+    password = db.Column(db.String)    
     email = db.Column(db.String, unique=True)
+    firstName = db.Column(db.String)
+    lastName = db.Column(db.String)
 
-    def __init__ (self, username,password,name,email):
+    def __init__ (self, username,password,email, firstName, lastName):
         self.username = username
         self.password = password
-        self.name = name
         self.email = email
+        self.firstName = firstName
+        self.lastName = lastName
        
     @property
     def __repr__ (self):
